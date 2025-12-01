@@ -44,9 +44,17 @@
                 {{ __('Already registered?') }}
             </a>
 
+            <x-secondary-button class="ms-3">
+            <a href="{{route('login')}}">
+              Log in
+            </a>
+            </x-secondary-button>
+
+
             <x-primary-button class="ms-4">
-                {{ __('Register') }}
+               Register
             </x-primary-button>
+            
         </div>
     </form>
 </x-guest-layout>

@@ -39,6 +39,11 @@
                             {{ __('Profile') }}
                         </x-dropdown-link>
 
+                        <!-- Dashboard Link -->
+                             <x-dropdown-link :href="route('dashboard')">
+                                Dashboard
+                            </x-dropdown-link>
+
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
