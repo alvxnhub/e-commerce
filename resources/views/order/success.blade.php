@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Welcome')
+@section('title', 'MCC Store')
 
 <div class="pt-20">
 <div class="max-w-md mx-auto mt-10 p-6 bg-green-100 border border-green-300 rounded">

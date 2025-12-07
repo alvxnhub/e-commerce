@@ -3,6 +3,7 @@
 @section('title', 'MCC Store')
 
 @section('content')
+
     <!-- HERO SECTION -->
     <div class="relative px-6 pt-32 lg:px-8">
         <div class="max-w-2xl mx-auto text-center py-28 sm:py-48">

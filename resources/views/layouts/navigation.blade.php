@@ -54,7 +54,7 @@
             Dashboard
         </x-dropdown-link>
 
-        <div class="border-t border-gray-100"></div>
+        <!-- <div class="border-t border-gray-100"></div> -->
 
         <!-- Logout -->
         <form method="POST" action="{{ route('logout') }}">
