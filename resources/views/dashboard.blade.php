@@ -20,6 +20,17 @@
                             <p class="text-black">Quantity: {{ $order->quantity }}</p>
                             <p class="text-black">Total: ₱{{ number_format($order->total_price, 2) }}</p>
                             <p class="text-black text-sm mt-1">Ordered on {{ $order->created_at->timezone('Asia/Manila')->format('M d, Y h:i A') }}</p>
+                            <div class="mt-3">
+                                @if($order->status === 'pending')
+                                    <span class="inline-block bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-semibold">Pending</span>
+                                @elseif($order->status === 'ready')
+                                    <span class="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">Order is ready. Claim it at the cashier</span>
+                                @elseif($order->status === 'completed')
+                                    <span class="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">Completed</span>
+                                @elseif($order->status === 'cancelled')
+                                    <span class="inline-block bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-semibold">Cancelled</span>
+                                @endif
+                            </div>
                         </div>
                         @endforeach
                     </div>

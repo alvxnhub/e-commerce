@@ -54,6 +54,13 @@
             Dashboard
         </x-dropdown-link>
 
+        @if(Auth::user()->role === 'admin')
+        <div class="border-t border-gray-100"></div>
+        <x-dropdown-link :href="route('admin.dashboard')">
+            Admin Dashboard
+        </x-dropdown-link>
+        @endif
+
         <!-- <div class="border-t border-gray-100"></div> -->
 
         <!-- Logout -->

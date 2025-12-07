@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\AdminController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use App\Models\Order;
@@ -15,6 +16,14 @@ Route::get('/dashboard', function () {
     $orders = Order::where('user_id', Auth::id())->latest()->get();
     return view('dashboard', compact('orders'));
 })->middleware(['auth'])->name('dashboard');
+
+// Admin Routes
+Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+    Route::post('/order/{id}/ready', [AdminController::class, 'markOrderReady'])->name('order.ready');
+    Route::post('/order/{id}/complete', [AdminController::class, 'completeOrder'])->name('order.complete');
+    Route::post('/order/{id}/cancel', [AdminController::class, 'cancelOrder'])->name('order.cancel');
+});
 
 Route::middleware('auth')->group(function () {
    
@@ -35,3 +44,4 @@ Route::get('/products', function () {
 Route::get('/product/{id}', [OrderController::class, 'showProduct'])->name('product.show');
 
 require __DIR__.'/auth.php';
+
