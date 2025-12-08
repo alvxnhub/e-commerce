@@ -40,15 +40,10 @@ Before starting, make sure you have these installed:
 ## 7. Generate PHP key
     php artisan key:generate
 
-## 8. Install packages
-    composer install
-    npm install
-    npm run build
-
-## 9. Run npm
+## 8. Run npm
     npm run dev
 
-## 10. Start the web
+## 9. Start the web
     php artisan serve
 
 
