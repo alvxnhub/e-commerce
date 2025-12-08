@@ -19,6 +19,18 @@ class ProductSeeder extends Seeder
     'price' => 499.991,
     'image' => 'mcc-uniform.png',
     ]);
+        Product::create([
+    'name' => 'MCC P.E Uniform',
+    'description' => 'This is just a sample product.',
+    'price' => 449.991,
+    'image' => 'mcc-pe.png',
+    ]);
+        Product::create([
+    'name' => 'MCC NSTP Uniform',
+    'description' => 'This is another sample product.',
+    'price' => 349.991,
+    'image' => 'mcc-nstp.png',
+    ]);
 
     }
 }

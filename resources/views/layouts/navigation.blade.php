@@ -12,14 +12,13 @@
         </div>
 
         <!-- MENU LINKS -->
-        <div class="hidden lg:flex gap-x-8 font-semibold text-red-600">
+        <div class="hidden lg:flex gap-x-8 font-semibold text-red-600 items-center">
             <a href="{{ route('welcome') }}" class="text-lg hover:text-red-700">
                 Home
             </a>
             <a href="{{ route('products.index') }}" class="text-lg hover:text-red-700">
                 Products
             </a>
-            <a href="#" class="text-lg hover:text-red-700">Contacts</a>
         </div>
 
        <!-- Authentication Buttons -->
