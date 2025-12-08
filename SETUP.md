@@ -35,11 +35,23 @@ Before starting, make sure you have these installed:
     php artisan migrate
 
 ### 6. Seed the database (if you have seeders)
-    php artisan db:seed
+    php artisan db:seed --class=<SeederFileName>
 
-### 7. npm run dev
+## 7. Generate PHP key
+    php artisan key:generate
 
-### 8. php artisan serve
+## 8. Install packages
+    composer install
+    npm install
+    npm run build
+
+## 9. Run npm
+    npm run dev
+
+## 10. Start the web
+    php artisan serve
+
+
 
 
 
