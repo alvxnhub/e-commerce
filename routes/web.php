@@ -23,6 +23,9 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     Route::post('/order/{id}/ready', [AdminController::class, 'markOrderReady'])->name('order.ready');
     Route::post('/order/{id}/complete', [AdminController::class, 'completeOrder'])->name('order.complete');
     Route::post('/order/{id}/cancel', [AdminController::class, 'cancelOrder'])->name('order.cancel');
+    Route::get('/users', [AdminController::class, 'users'])->name('users');
+    Route::post('/user/{id}/suspend', [AdminController::class, 'suspendUser'])->name('user.suspend');
+    Route::post('/user/{id}/unsuspend', [AdminController::class, 'unsuspendUser'])->name('user.unsuspend');
 });
 
 Route::middleware('auth')->group(function () {
