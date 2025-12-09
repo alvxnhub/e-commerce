@@ -48,11 +48,11 @@
         <x-dropdown-link :href="route('profile.edit')">
             Profile
         </x-dropdown-link>
-
+        @if(Auth::user()->role === 'user')
         <x-dropdown-link :href="route('dashboard')">
             Dashboard
         </x-dropdown-link>
-
+        @endif
         @if(Auth::user()->role === 'admin')
         <div class="border-t border-gray-100"></div>
         <x-dropdown-link :href="route('admin.dashboard')">
