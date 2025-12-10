@@ -37,7 +37,7 @@ class AdminController extends Controller
     }
 
    
-    //  Update order status to ready for pickup
+    //  Update order status to ready
     
     public function markOrderReady($id)
     {
