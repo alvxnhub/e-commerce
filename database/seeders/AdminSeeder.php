@@ -18,18 +18,10 @@ class AdminSeeder extends Seeder
         User::create([
             'name' => 'Admin User',
             'email' => 'admin@ecommerce.test',
-            'password' => Hash::make('admin@123'), // Change this password in production!
+            'password' => Hash::make('admin@123'),
             'role' => 'admin',
             'email_verified_at' => now(),
         ]);
 
-        // Create a test regular user
-    //     User::create([
-    //         'name' => 'Test User',
-    //         'email' => 'user@ecommerce.test',
-    //         'password' => Hash::make('user@123'),
-    //         'role' => 'user',
-    //         'email_verified_at' => now(),
-    //     ]);
     }
 }
