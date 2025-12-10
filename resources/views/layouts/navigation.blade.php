@@ -11,7 +11,7 @@
                     <span class="font-bold text-2xl text-red-600">MCC Store</span>
                 </a>
                 @else
-                <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-3">
+                <a href="{{ route('welcome') }}" class="flex items-center gap-3">
                     <img src="{{ asset('images/mcc-logo.png') }}" 
                          alt="MCC Logo" 
                          class="h-14 w-14 object-contain">
