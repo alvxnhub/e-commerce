@@ -4,7 +4,7 @@
         <div class="flex items-center flex-1">
             @auth
                 @if(Auth::user()->role === 'user')
-                <a href="{{ route('dashboard') }}" class="flex items-center gap-3">
+                <a href="{{ route('welcome') }}" class="flex items-center gap-3">
                     <img src="{{ asset('images/mcc-logo.png') }}" 
                          alt="MCC Logo" 
                          class="h-14 w-14 object-contain">
@@ -33,11 +33,14 @@
         @auth
             @if(Auth::user()->role === 'user')
             <div class="hidden lg:flex gap-x-8 font-semibold text-red-600 items-center">
-                <a href="{{ route('dashboard') }}" class="text-lg hover:text-red-700">
+                <a href="{{ route('welcome') }}" class="text-lg hover:text-red-700">
                     Home
                 </a>
                 <a href="{{ route('products.index') }}" class="text-lg hover:text-red-700">
                     Products
+                </a>
+                <a href="{{ route('dashboard') }}" class="text-lg hover:text-red-700">
+                    Dashboard
                 </a>
             </div>
             @else
