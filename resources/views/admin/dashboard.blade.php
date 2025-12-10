@@ -34,7 +34,6 @@
             <!-- Header Section -->
             <div class="mb-8">
                 <h1 class="text-4xl font-bold text-red-500 mb-2">Order Management</h1>
-                <p class="text-red-400 ml-5">Manage and track all customer orders in real-time</p>
             </div>
 
             <!-- Success Message -->
@@ -46,6 +45,9 @@
 
             <!-- Status Tabs -->
             <div class="mb-6 flex gap-2 overflow-x-auto pb-2">
+                <button onclick="showTab('all')" class="tab-btn active px-6 py-2 bg-gray-500 text-white rounded-lg font-semibold whitespace-nowrap hover:bg-gray-600 transition">
+                    All Orders ({{ $orders->count() }})
+                </button>
                 <button onclick="showTab('pending')" class="tab-btn active px-6 py-2 bg-yellow-500 text-white rounded-lg font-semibold whitespace-nowrap hover:bg-yellow-600 transition">
                     Pending ({{ $pending->count() }})
                 </button>
@@ -60,8 +62,63 @@
                 </button>
             </div>
 
+            <!-- All Orders Tab -->
+            <div id="all-tab" class="tab-content">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm text-gray-700">
+                            <thead class="bg-gray-500 text-white sticky top-0">
+                                <tr>
+                                    <th class="px-6 py-4 text-left font-semibold">Order ID</th>
+                                    <th class="px-6 py-4 text-left font-semibold">Product</th>
+                                    <th class="px-6 py-4 text-left font-semibold">Customer</th>
+                                    <th class="px-6 py-4 text-left font-semibold">Contact</th>
+                                    <th class="px-6 py-4 text-left font-semibold">Address</th>
+                                    <th class="px-6 py-4 text-center font-semibold">Qty</th>
+                                    <th class="px-6 py-4 text-left font-semibold">Total</th>
+                                    <th class="px-6 py-4 text-left font-semibold">Date</th>
+                                    <th class="px-6 py-4 text-left font-semibold">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200">
+                                @forelse($orders as $order)
+                                <tr class="hover:bg-gray-50 transition-colors duration-200">
+                                    <td class="px-6 py-4 font-bold text-blue-600">#{{ $order->id }}</td>
+                                    <td class="px-6 py-4 font-medium text-gray-900">{{ $order->product_name }}</td>
+                                    <td class="px-6 py-4 font-medium text-gray-900">{{ $order->customer_name }}</td>
+                                    <td class="px-6 py-4">
+                                        <div class="text-sm text-gray-700">{{ $order->email }}</div>
+                                        <div class="text-xs text-gray-500">{{ $order->phone }}</div>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-700">{{ $order->address }}</td>
+                                    <td class="px-6 py-4 text-center font-semibold text-gray-900">{{ $order->quantity }}</td>
+                                    <td class="px-6 py-4 font-bold text-green-600">₱{{ number_format($order->total_price, 2) }}</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600">{{ $order->created_at->timezone('Asia/Manila')->format('M d, Y') }}<br><span class="text-xs text-gray-500">{{ $order->created_at->timezone('Asia/Manila')->format('h:i A') }}</span></td>
+                                    <td class="px-6 py-4 text-sm font-semibold">
+                                        @if($order->status == 'pending')
+                                            <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-xs">Pending</span>
+                                        @elseif($order->status == 'ready')
+                                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs">Ready</span>
+                                        @elseif($order->status == 'completed')
+                                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs">Completed</span>
+                                        @else
+                                            <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-xs">Cancelled</span>
+                                        @endif
+                                    </td>
+                                </tr>
+                                @empty
+                                <tr>
+                                    <td colspan="9" class="px-6 py-12 text-center text-gray-500">No orders</td>
+                                </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
             <!-- Pending Orders Tab -->
-            <div id="pending-tab" class="tab-content">
+            <div id="pending-tab" class="tab-content hidden">
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden">
                     <div class="overflow-x-auto">
                         <table class="w-full text-sm text-gray-700">

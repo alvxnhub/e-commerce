@@ -27,12 +27,13 @@ class AdminController extends Controller
     
     public function dashboard()
     {
+        $orders = Order::with('product')->latest()->get();
         $pending = Order::with('product')->where('status', 'pending')->latest()->get();
         $ready = Order::with('product')->where('status', 'ready')->latest()->get();
         $completed = Order::with('product')->where('status', 'completed')->latest()->get();
         $cancelled = Order::with('product')->where('status', 'cancelled')->latest()->get();
         
-        return view('admin.dashboard', compact('pending', 'ready', 'completed', 'cancelled'));
+        return view('admin.dashboard', compact('orders', 'pending', 'ready', 'completed', 'cancelled'));
     }
 
    
