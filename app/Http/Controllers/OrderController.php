@@ -47,6 +47,6 @@ class OrderController extends Controller
             'user_id'      => Auth::id(),
         ]);
 
-        return view('order.success', compact('product', 'quantity'));
+        return view('order.success');
     }
 }
