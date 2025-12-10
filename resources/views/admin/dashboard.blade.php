@@ -150,10 +150,16 @@
                                     <td class="px-6 py-4 font-bold text-green-600">₱{{ number_format($order->total_price, 2) }}</td>
                                     <td class="px-6 py-4 text-sm text-gray-600">{{ $order->created_at->timezone('Asia/Manila')->format('M d, Y') }}<br><span class="text-xs text-gray-500">{{ $order->created_at->timezone('Asia/Manila')->format('h:i A') }}</span></td>
                                     <td class="px-6 py-4">
-                                        <form action="{{ route('admin.order.ready', $order->id) }}" method="POST" class="inline">
+                                        <form action="{{ route('admin.order.ready', $order->id) }}" method="POST" class="inline mr-2">
                                             @csrf
                                             <button type="submit" class="bg-green-600 hover:bg-green-700 text-white px-3 py-2 rounded text-xs font-bold transition-colors duration-200 whitespace-nowrap">
                                                 ✓ Mark Ready
+                                            </button>
+                                        </form>
+                                        <form action="{{ route('admin.order.cancel', $order->id) }}" method="POST" class="inline">
+                                            @csrf
+                                            <button type="submit" class="bg-red-100 text-red-800 px-3 py-2 rounded text-xs font-bold hover:bg-red-300 transition-colors duration-200 whitespace-nowrap">
+                                                X Cancel
                                             </button>
                                         </form>
                                     </td>
