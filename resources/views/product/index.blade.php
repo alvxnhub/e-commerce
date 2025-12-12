@@ -16,13 +16,19 @@
                 @endif
 
                 <h2 class="font-bold text-lg">{{ $product->name }}</h2>
-                <p class="text-gray-600 text-sm">{{ $product->description }}</p>
+                <p class="text-gray-600 text-sm">{{ Str::limit($product->description, 60) }}</p>
                 <p class="mt-2 font-semibold">₱{{ number_format($product->price, 2) }}</p>
 
-                <a href="{{ route('order.form', $product->id) }}"
-                   class="mt-3 inline-block bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">
-                   Order Now
-                </a>
+                <div class="mt-3 flex gap-2">
+                    <a href="{{ route('product.show', $product->id) }}"
+                       class="flex-1 text-center bg-gray-600 text-white px-3 py-1 rounded hover:bg-gray-700 text-sm">
+                       View Details
+                    </a>
+                    <a href="{{ route('order.form', $product->id) }}"
+                       class="flex-1 text-center bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 text-sm">
+                       Order Now
+                    </a>
+                </div>
             </div>
         @endforeach
     </div>
