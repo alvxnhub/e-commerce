@@ -21,7 +21,7 @@
             </h1>
 
             <p class="mt-8 text-lg text-white max-w-xl mx-auto">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.
+                A school-based e-commerce platform created to help students easily purchase affordable and essential items within the campus.
             </p>
 
             <div class="mt-10 flex justify-center gap-x-6">
